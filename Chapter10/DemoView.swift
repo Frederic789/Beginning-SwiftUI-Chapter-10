@@ -1,4 +1,4 @@
-//
+// DemoView Modified
 //  DemoView.swift
 //  Chapter10
 //
@@ -46,10 +46,10 @@ struct DemoView: View {
                             .frame(width: 50, height: 50)
                         
                         // Textbook example:
-                        //                Text("Options")
-                        //                    .font(.largeTitle)
-                        //                    .foregroundColor(.purple)
-                        //                    .italic()
+                                       Text("Options")
+                                           .font(.largeTitle)
+                                          .foregroundColor(.purple)
+                                           .italic()
                     }
                     Spacer()
                 }
