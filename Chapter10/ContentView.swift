@@ -1,4 +1,4 @@
-//
+// ContentView Modified
 //  ContentView.swift
 //  Chapter10
 //
@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
             DemoView()
+        TextEditorView()
+        ExerciseView()
     }
 }
 
@@ -18,3 +21,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
