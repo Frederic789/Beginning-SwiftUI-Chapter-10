@@ -1,88 +1,57 @@
-// DemoView Modified
-//  DemoView.swift
+//TextEditorView Modifier
+//  TextEditorView.swift
 //  Chapter10
 //
-//  Created by Mike Panitz on 4/17/23.
+//  Created by Student Account on 8/11/23.
 //
 
-import Foundation
 import SwiftUI
 
-struct DemoView: View {
-    @State var message = ""
+struct TextEditorView: View {
+    @State private var text: String = ""
+    
     var body: some View {
         VStack {
-            VStack {
-                Spacer()
-                Link(destination: URL(string: "https://www.apple.com")! ) {
-                    Text("Click here to go to Apple.com")
-                        .underline()
-                }
-                Spacer()
-            }
-            VStack {
-                Text(message)
-                    .padding()
-                Menu("Options") {
-                    Button("Open ", action: openFile)
-                    Button("Find", action: findFile)
-                    Button("Delete...", action: deleteFile)
-                }
-                VStack {
-                    Spacer()
-                    Menu() {
-                        Button("Open ", action: {
-                            message = "Open chosen"
-                        })
-                        Button("Find", action: {
-                            message = "Find chosen"
-                        })
-                        Button("Delete...", action: {
-                            message = "Delete chosen"
-                        })
-                    } label: {
-                        Image(systemName: "1.circle")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        
-                        // Textbook example:
-                                       Text("Options")
-                                           .font(.largeTitle)
-                                          .foregroundColor(.purple)
-                                           .italic()
-                    }
-                    Spacer()
-                }
-                VStack {
-                    Menu("Options") {
-                        Button("Open ", action: openFile)
-                        Button("Find", action: findFile)
-                        Button("Delete...", action: deleteFile)
-                        Menu("Submenu") {
-                            Button("Copy Format", action: openFile)
-                            Button("Paste Format", action: findFile)
-                        }
-                    }
+            Menu("Options") {
+                Button("Find", action: findAction)
+                Button("Print", action: printAction)
+                
+                Menu("File") {
+                    Button("Save", action: saveAction)
+                    Button("Save As", action: saveAsAction)
+                    Button("Delete File", action: deleteAction)
                 }
             }
+            
+            TextEditor(text: $text)
+                .border(Color.gray)
+                .padding()
         }
-        .padding()
     }
-    func openFile() {
-        message = "Open chosen"
+    
+    func findAction() {
+        print("Find option selected")
     }
-    func findFile() {
-        message = "Find chosen"
+    
+    func printAction() {
+        print("Print option selected")
     }
-    func deleteFile() {
-        message = "Delete chosen"
+    
+    func saveAction() {
+        print("Save option selected")
+    }
+    
+    func saveAsAction() {
+        print("Save As option selected")
+    }
+    
+    func deleteAction() {
+        print("Delete File option selected")
     }
 }
 
-
-
-struct DemoView_Previews: PreviewProvider {
+struct TextEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoView()
+        TextEditorView()
     }
 }
