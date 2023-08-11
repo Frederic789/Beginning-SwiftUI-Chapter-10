@@ -1,57 +1,55 @@
-//TextEditorView Modifier
-//  TextEditorView.swift
+
+
+// ExerciseView Modigied
+//  ExerciseView.swift
 //  Chapter10
 //
-//  Created by Student Account on 8/11/23.
+//  Created by Student Account on 8/10/23.
 //
 
-import SwiftUI
+import Foundation
 
-struct TextEditorView: View {
-    @State private var text: String = ""
-    
+import SwiftUI
+struct ExerciseView: View {
+    @State var message = ""
     var body: some View {
         VStack {
+            Text(message)
+                .padding()
+            
+            Link("Click here to go to Apple.com", destination: URL(string: "https://www.apple.com")!)
+                           .padding()
+                       
             Menu("Options") {
-                Button("Find", action: findAction)
-                Button("Print", action: printAction)
-                
-                Menu("File") {
-                    Button("Save", action: saveAction)
-                    Button("Save As", action: saveAsAction)
-                    Button("Delete File", action: deleteAction)
+                Button("Open ", action: openFile)
+                Button("Find", action: findFile)
+                Button("Delete...", action: deleteFile)
+                Menu("Submenu") {
+                    Button("Copy Format", action: copyFormat)
+                    Button("Paste Format", action: pasteFormat)
                 }
             }
-            
-            TextEditor(text: $text)
-                .border(Color.gray)
-                .padding()
+            Spacer()
         }
     }
-    
-    func findAction() {
-        print("Find option selected")
+    func openFile() {
+        message = "Open chosen"
     }
-    
-    func printAction() {
-        print("Print option selected")
+    func findFile() {
+        message = "Find chosen"
     }
-    
-    func saveAction() {
-        print("Save option selected")
+    func deleteFile() {
+        message = "Delete chosen"
     }
-    
-    func saveAsAction() {
-        print("Save As option selected")
+    func copyFormat() {
+        message = "Copy format chosen"
     }
-    
-    func deleteAction() {
-        print("Delete File option selected")
+    func pasteFormat() {
+        message = "Paste format chosen"
     }
 }
-
-struct TextEditorView_Previews: PreviewProvider {
+struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        TextEditorView()
+        ContentView()
     }
 }
